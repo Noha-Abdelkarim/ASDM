@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "ASDM: Adaptive Sequential Defense Mechanism for IoT-SDN Environments"
+authors:
+  - family-names: "YourLastName"
+    given-names: "YourFirstName"
+    orcid: "https://orcid.org/xxxx-xxxx-xxxx-xxxx"
+date-released: 2025-08-01
+doi: "DOI of your paper if available"
+license: MIT

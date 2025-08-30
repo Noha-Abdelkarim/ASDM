@@ -1,0 +1,5 @@
+{
+    "DDoS": "rate_limit",
+    "ARP_Spoofing": "block",
+    "Port_Scan": "alert"
+}

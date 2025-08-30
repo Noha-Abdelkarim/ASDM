@@ -1,0 +1,22 @@
+[
+  {
+    "src_ip": "10.0.0.1",
+    "dst_ip": "10.0.0.2",
+    "action": "allow"
+  },
+  {
+    "src_ip": "10.0.0.2",
+    "dst_ip": "10.0.0.1",
+    "action": "allow"
+  },
+  {
+    "src_ip": "10.0.0.3",
+    "dst_ip": "10.0.0.4",
+    "action": "allow"
+  },
+  {
+    "src_ip": "10.0.0.4",
+    "dst_ip": "10.0.0.3",
+    "action": "allow"
+  }
+]
