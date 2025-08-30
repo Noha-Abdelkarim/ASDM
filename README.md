@@ -25,42 +25,44 @@ The framework integrates **real-time anomaly detection, trust scoring, adaptive 
 
 ---
 ---
-## 📁 Project Structure
+## 📂 Project Structure
+
+ ```` ``` ```` 
 ASDM/
 ├── controller/
-│   ├── controller_manager.py        # Orchestrates SAD, TSTA, ACD, DAM agents
-│   ├── config/
-│   │   ├── controller_policy.json   # Controller thresholds/policies
-│   │   ├── block_policy.json        # Mitigation policies
+│ ├── controller_manager.py # Orchestrates ACD, SAD, TSTA, DAM
+│ └── config/
+│ ├── controller_policy.json
+│ ├── block_policy.json
 │
 ├── src/
-│   ├── sad/                         # Sequential Anomaly Detection
-│   │   ├── sad_agent.py
-│   │   ├── models/                  # Saved ML models (lstm_gru_model.h5, scaler.pkl)
-│   │   ├── generate_model.py        #  model training
-│   │   └── preprocess.py
-│   │
-│   ├── tsta/                        # Trust Scoring & Threat Assessment
-│   │   └── tsta_agent.py
-│   │
-│   ├── acd/                         # Adaptive Collaborative Defense
-│   │   └── acd_agent.py
-│   │
-│   ├── dam/                         # Dynamic Attack Mitigation
-│   │   └── dam_agent.py
+│ ├── acd/ # Attack Classification & Detection
+│ │ └── acd_agent.py
+│ ├── sad/ # Sequential Attack Detection
+│ │ ├── sad_agent.py
+│ │ ├── generate_model.py # Builds & saves LSTM-GRU model
+│ │ ├── generate_scaler.py # Builds & saves feature scaler
+│ │ ├── models.py # Model architecture (LSTM-GRU hybrid)
+│ │ └── preprocess.py # Data preprocessing utilities
+│ ├── tsta/ # Temporal-Spatial Threat Analysis
+│ │ └── tsta_agent.py
+│ ├── dam/ # Defense & Mitigation
+│ │ └── dam_agent.py
+│ └── init.py
 │
 ├── topology/
-│   └── asdm_topo.py                 # Mininet topology (IoT hosts + SDN switches)
+│ └── asdm_topo.py # Mininet network topology
 │
 ├── attack_simulator/
-│   └── attack_launcher.py           # UDP, TCP, HTTP, and Mixed DDoS attacks
+│ └── attack_launcher.py # UDP, TCP, HTTP, Mixed flood attacks
 │
 ├── experiments/
-│   └── results_logs/                # Runtime logs of all agents & controller
+│ └── results_logs/ # Runtime logs (acd_C1.log, sad_C1.log, etc.)
 │
-├── requirements.txt
-└── README.md
----
+├── requirements.txt # Python dependencies
+└── README.md # Project documentation
+
+ ```` ``` ```` 
 ---
 ## 🏗️ Requirements
 
@@ -144,4 +146,5 @@ sudo python3 topology/asdm_topo.py
 Enjoy Testing :)
   
 ---
+
 
