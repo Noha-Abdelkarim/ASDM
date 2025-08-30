@@ -27,42 +27,45 @@ The framework integrates **real-time anomaly detection, trust scoring, adaptive 
 ---
 ## 📂 Project Structure
 
- ```` ``` ```` 
+ ``` 
 ASDM/
 ├── controller/
-│ ├── controller_manager.py # Orchestrates ACD, SAD, TSTA, DAM
+│ ├── controller_manager.py                         # Orchestrates ACD, SAD, TSTA, DAM
+│ │
 │ └── config/
 │ ├── controller_policy.json
 │ ├── block_policy.json
 │
 ├── src/
-│ ├── acd/ # Attack Classification & Detection
+│ ├── acd/                                           # Attack Classification & Detection
 │ │ └── acd_agent.py
+│ │
 │ ├── sad/ # Sequential Attack Detection
 │ │ ├── sad_agent.py
-│ │ ├── generate_model.py # Builds & saves LSTM-GRU model
-│ │ ├── generate_scaler.py # Builds & saves feature scaler
-│ │ ├── models.py # Model architecture (LSTM-GRU hybrid)
-│ │ └── preprocess.py # Data preprocessing utilities
-│ ├── tsta/ # Temporal-Spatial Threat Analysis
+│ │ ├── generate_model.py                            # Builds & saves LSTM-GRU model
+│ │ ├── generate_scaler.py                           # Builds & saves feature scaler
+│ │ ├── models.py                                    # Model architecture (LSTM-GRU hybrid)
+│ │ └── preprocess.py                                # Data preprocessing utilities
+│ │
+│ ├── tsta/                                          # Temporal-Spatial Threat Analysis
 │ │ └── tsta_agent.py
-│ ├── dam/ # Defense & Mitigation
+│ │
+│ ├── dam/                                           # Defense & Mitigation
 │ │ └── dam_agent.py
-│ └── init.py
-│
+│ 
 ├── topology/
-│ └── asdm_topo.py # Mininet network topology
+│ └── asdm_topo.py                                   # Mininet network topology
 │
 ├── attack_simulator/
-│ └── attack_launcher.py # UDP, TCP, HTTP, Mixed flood attacks
+│ └── attack_launcher.py                             # UDP, TCP, HTTP, Mixed flood attacks
 │
 ├── experiments/
-│ └── results_logs/ # Runtime logs (acd_C1.log, sad_C1.log, etc.)
+│ └── results_logs/                                  # Runtime logs (acd_C1.log, sad_C1.log, etc.)
 │
-├── requirements.txt # Python dependencies
-└── README.md # Project documentation
+├── requirements.txt                                 # Python dependencies
+└── README.md                                        # Project documentation
 
- ```` ``` ```` 
+ ```
 ---
 ## 🏗️ Requirements
 
@@ -143,8 +146,9 @@ sudo python3 topology/asdm_topo.py
 
 ---
 
-Enjoy Testing :)
+Have a Good Testing :)
   
 ---
+
 
 
