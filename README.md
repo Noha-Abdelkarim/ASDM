@@ -107,8 +107,20 @@ sudo python3 topology/asdm_topo.py
 
 ---
 
+## 📊 Evaluation Datasets
+
+ASDM has been rigorously tested and validated using four diverse and widely recognized datasets:
+
+* [CIC IoMT 2024](https://www.unb.ca/cic/datasets/iomt-dataset-2024.html) – IoMT-focused traffic dataset with multi-vector DDoS scenarios  
+* [UNSW-NB15](https://research.unsw.edu.au/projects/unsw-nb15-dataset) – Comprehensive dataset including modern attack subtypes and normal traffic  
+* [ToN_IoT](https://research.unsw.edu.au/projects/toniot-datasets) – IoT telemetry and multi-vector low-rate attack dataset  
+* [CIC IoT 2023](https://www.unb.ca/cic/datasets/iotdataset-2023.html) – Real IoT protocol traffic with noise and imbalance challenges  
+
+---
+
 ## 🧪 Moudels Results
 
+---
 | Moudels | results                                     |
 | --------| --------------------------------------------|
 | SAD     | Detecs anomaly sequences                    |
@@ -121,15 +133,18 @@ sudo python3 topology/asdm_topo.py
 ---
 ## 🧪 Performance Metrics
 
-| Metric                        | Value                      |
-| ----------------------------- | -------------------------- |
-| Binary Detection Accuracy     | 99.22%                     |
-| Multi-class Accuracy          | Up to 98.92%               |
-| Detection Latency             | 0.21s                      |
-| MFRR (Mitigation Flow Recall) | > 88%                      |
-| EMP (Effective Mitigation %)  | > 96.9%                    |
-| Failover Accuracy             | ≥ 96.6%                    |
-| Controller Overhead Reduction | CPU: -31%, Bandwidth: -36% |
+| Metric                        | Value                                      |
+| ----------------------------- | ------------------------------------------ |
+| Binary Detection Accuracy     | Up to **98.3%**                            |
+| Multi-class Accuracy          | Up to **98.9%**                            |
+| Precision                     | Up to **97.5%**                            |
+| Recall                        | Up to **99.0%**                            |
+| F1-Score                      | Up to **98.9%**                            |
+| Detection Latency             | < **12 ms**                                |
+| Mitigation Latency            | **2.5 – 3.9 s**                            |
+| False Alarm Rate (FAR)        | **0.4% – 2.1%**                            |
+| CPU Utilization               | < **31%** at peak attack loads             |
+| Traffic Recovery              | > **98%** during mitigation                |
 
 ---
 ---
@@ -149,6 +164,7 @@ sudo python3 topology/asdm_topo.py
 Have a Good Testing :)
   
 ---
+
 
 
 
