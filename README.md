@@ -221,15 +221,19 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 
 ---
 
-## 🧪 Moudels Results
-
 ---
-| Moudels | results                                     |
-| --------| --------------------------------------------|
-| SAD     | Detecs anomaly sequences                    |
-| TSTA    | Marks device trust ↓ during sustained flood |
-| ACD     | Coordinates trust alerts across controller  |
-| DAM     | Blocks/limits victim-facing flow            |
+## 🧪 Modules outcomes
+
+The ASDM framework integrates four coordinated modules. Their real-world roles and outcomes are summarized below:
+
+| 🔬 **Module** | 📝 **Description of Results**                                                                             |
+|-------------------------------------------------|--------------------------------------------------------------------------|
+| 🧩 **SAD** (Sequential Attack Detection)        | Detects anomalous traffic sequences with high temporal accuracy         |
+| 🔐 **TSTA** (Temporal-Spatial Threat Analysis)  | Dynamically adjusts device trust scores during sustained flood attacks  |
+| 📡 **ACD** (Attack Classification & Detection)  | Classifies attack vectors and coordinates alerts across controllers      |
+| 🛡️ **DAM** (Defense & Mitigation)               | Enforces mitigation by blocking, throttling, or rerouting malicious flows|
+
+✅ These modules operate **sequentially and cooperatively**, ensuring early anomaly detection (SAD), contextual device trust analysis (TSTA), accurate attack classification (ACD), and adaptive mitigation strategies (DAM).  
 
 ---
 
@@ -267,6 +271,7 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 Have a Good Testing :)
   
 ---
+
 
 
 
