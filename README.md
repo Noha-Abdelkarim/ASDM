@@ -129,42 +129,85 @@ Metrics reported: detection time, mitigation latency, CPU usage, recovery %
 
 ### 🌐 2. Real-World Deployment (SD-IoT Network)
 
-This mode integrates ASDM with real SDN controllers, IoT/edge devices, and P4-enabled switches.
+This mode integrates ASDM with **real SDN controllers, IoT/edge devices, and P4-enabled switches**.
 
 #### Step 1: Deploy Controller
-
-Install ASDM on your controller host and run:
-
+Install ASDM on your **controller host** and start the orchestrator:
 ```bash
+# Clone repository
+git clone https://github.com/Noha-Abdelkarim/ASDM.git
+cd ASDM
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start ASDM controller (manages ACD, SAD, TSTA, DAM)
 python3 -m controller.controller_manager
 ```
 
-#### Step 2: Connect IoT/Edge Device
+#### Step 2: Connect IoT/Edge Devices
+Configure IoT devices to send their traffic through the SDN switch.  
 
-Configure IoT devices to forward traffic via the SDN switch.
-Ensure OpenFlow or P4Runtime communication with the controller.
-
+**For OpenFlow switches:**
+```bash
+# Example (on Open vSwitch)
+sudo ovs-vsctl set-controller br0 tcp:<controller-ip>:6633
+```
+**For P4 switches with P4Runtime:**
+```bash
+# Launch P4 switch with controller connection
+simple_switch_grpc --device-id 0 \
+    --log-console \
+    --thrift-port 9090 \
+    --no-p4 \
+    --grpc-server-addr 0.0.0.0:50051 \
+    --controller <controller-ip>:50051
+```
 #### Step 3: Enable SAD + TSTA
 
-SAD (Sequential Attack Detection): Detects anomalies over time.
-TSTA (Temporal-Spatial Threat Analysis): Assesses device trustworthiness.
+These modules are automatically activated when the controller runs.
+Monitor them in real time:
+```bash
+tail -f experiments/results_logs/sad_C1.log
+tail -f experiments/results_logs/tsta_C1.log
+```
 
 #### Step 4: Real Traffic & Attack Injection
 
-Deploy normal IoT workloads (e.g., MQTT, CoAP, HTTP).
-Launch controlled attacks (e.g., UDP/TCP floods) from test nodes.
+Run normal IoT traffic (MQTT, CoAP, HTTP) on your devices.
+For controlled DDoS attack injection:
+```bash
+# From an attack node
+hping3 <target-ip> --flood --udp -p 80      # UDP Flood
+hping3 <target-ip> --flood -S -p 80         # TCP SYN Flood
+ab -n 100000 -c 1000 http://<target-ip>/    # HTTP Flood
+```
 
 #### Step 5: Adaptive Mitigation (DAM)
 
-Suspicious flows are rate-limited, rerouted, or blacklisted.
-Normal traffic remains unaffected to ensure service continuity.
+SThe DAM module automatically applies flow rules.
+Inspect applied rules with:
+```bash
+# For Open vSwitch
+sudo ovs-ofctl dump-flows br0
+
+# For P4 switches
+simple_switch_CLI --thrift-port 9090 <<< "table_dump"
+```
 
 #### Step 6: Validate Performance
 
-Monitor CPU and bandwidth overhead of the controller.
-Check recovery >98% and latency <12 ms (detection).
-Logs and analysis exported to experiments/results_logs/.
+Monitor performance and recovery:
+```bash
+# CPU usage
+htop
 
+# Bandwidth usage
+iftop -i eth0
+
+# Logs of detection/mitigation
+tail -f experiments/results_logs/dam_C1.log
+```
 ---
 
 ## 📊 Evaluation Datasets
@@ -224,6 +267,7 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 Have a Good Testing :)
   
 ---
+
 
 
 
