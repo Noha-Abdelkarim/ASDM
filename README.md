@@ -116,22 +116,23 @@ python3 attack_simulator/attack_launcher.py --attack udp
 python3 attack_simulator/attack_launcher.py --attack tcp
 python3 attack_simulator/attack_launcher.py --attack http
 python3 attack_simulator/attack_launcher.py --attack mix
-Supported attack types: UDP Flood, TCP SYN Flood, HTTP Flood, Mixed Flood.
 ```
+Supported attack types: UDP Flood, TCP SYN Flood, HTTP Flood, Mixed Flood.
 
 #### Step 6: Monitor Results
 Logs saved in:
 ```bash
-Copy code
 experiments/results_logs/
 ```
 Example files: acd_C1.log, sad_C1.log
 Metrics reported: detection time, mitigation latency, CPU usage, recovery %
 
 ### 🌐 2. Real-World Deployment (SD-IoT Network)
+
 This mode integrates ASDM with real SDN controllers, IoT/edge devices, and P4-enabled switches.
 
 #### Step 1: Deploy Controller
+
 Install ASDM on your controller host and run:
 
 ```bash
@@ -223,6 +224,7 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 Have a Good Testing :)
   
 ---
+
 
 
 
