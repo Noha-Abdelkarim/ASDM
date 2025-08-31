@@ -9,16 +9,16 @@ The framework integrates **real-time anomaly detection, trust scoring, adaptive 
 ## 🧠 Key Features
 
 * **Adaptive Collaborative Defense (ACD)**  
-  Coordinates alerts across controllers for resilience.
+  Enhance inter-controller resilience and initiate coordinated detection and mitigation.
   
 * **Sequential Anomaly Detection (SAD)**  
-  Hybrid LSTM–GRU model for detecting abnormal traffic sequences.
+  Detect sequential DDoS patterns using Hybrid LSTM–GRU model.
 
-* **Trust Scoring & Threat Assessment (TSTA)**  
-  Evaluates device trustworthiness dynamically.
+* **Time-Series Traffic Analysis  (TSTA)**  
+  Extract temporal and protocol-specific traffic features at the data plane.
 
-* **Dynamic Attack Mitigation (DAM)**  
-  Enforces blocking, blacklisting, or rate limiting on flows.
+* **Decentralized Adaptive Mitigation  (DAM)**  
+  Coordinate decentralized mitigation actions to isolate threats and maintain availability.
 
 * **Extensible Attack Simulation**  
   Supports DDoS test modes: **UDP flood, TCP flood, HTTP flood, Mixed flood**.
@@ -226,12 +226,12 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 
 The ASDM framework integrates four coordinated modules. Their real-world roles and outcomes are summarized below:
 
-| 🔬 **Module** | 📝 **Description of Results**                                                                             |
-|-------------------------------------------------|--------------------------------------------------------------------------|
-| 🧩 **SAD** (Sequential Attack Detection)        | Detects anomalous traffic sequences with high temporal accuracy         |
-| 🔐 **TSTA** (Temporal-Spatial Threat Analysis)  | Dynamically adjusts device trust scores during sustained flood attacks  |
-| 📡 **ACD** (Attack Classification & Detection)  | Classifies attack vectors and coordinates alerts across controllers      |
-| 🛡️ **DAM** (Defense & Mitigation)               | Enforces mitigation by blocking, throttling, or rerouting malicious flows|
+| 🔬 **Module** | 📝 **Description of Results**                                                                              |
+|--------------------------------------------------|--------------------------------------------------------------------------|
+| 🧩 **SAD** ( Sequential Anomaly Detection )     | Detects anomalous traffic sequences with high temporal accuracy          |
+| 🔐 **TSTA** ( Time-Series Traffic Analysis )    | Dynamically adjusts device trust scores during sustained flood attacks   |
+| 📡 **ACD** ( Adaptive Collaborative Defense )   | Classifies attack vectors and coordinates alerts across controllers       |
+| 🛡️ **DAM** ( Decentralized Adaptive Mitigation ) | Enforces mitigation by blocking, throttling, or rerouting malicious flows|
 
 ✅ These modules operate **sequentially and cooperatively**, ensuring early anomaly detection (SAD), contextual device trust analysis (TSTA), accurate attack classification (ACD), and adaptive mitigation strategies (DAM).  
 
@@ -271,6 +271,7 @@ The ASDM framework integrates four coordinated modules. Their real-world roles a
 Have a Good Testing :)
   
 ---
+
 
 
 
