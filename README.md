@@ -74,36 +74,95 @@ ASDM/
 * **Scapy**, **pandas**, **scikit-learn**, **tensorflow/keras**, **joblib**
 ---
 ---
-## 🚀 Quick Start
+## 📘 Solution Manual
 
-### 1. Set up the environment
+ASDM can be deployed in **two modes**:  
+1. 🖥️ **Emulation Environment** (for research and testing)  
+2. 🌐 **Real-World Deployment** (for production SD-IoT networks)  
 
-Install P4 tools and dependencies:
+---
 
+### 🖥️ 1. Emulation Environment (Mininet + P4 + Simulator)
+
+This mode is ideal for experiments, reproducibility, and validation.
+
+#### Step 1: Environment Setup
 ```bash
 pip install -r requirements.txt
+sudo apt-get install mininet
 ```
-
-### 2. Generate baseline model & scaler:
-
+#### Step 2: Prepare Models
 ```bash
 python3 src/sad/generate_model.py
 python3 src/sad/generate_scaler.py
 ```
+This builds and saves the hybrid LSTM–GRU model and the feature scaler used for SAD (Sequential Attack Detection).
 
-### 3. Run controller
+#### Step 3: Start Controller
+```bash
+python3 -m controller.controller_manager
+```
+This orchestrates ACD, SAD, TSTA, and DAM modules.
+
+#### Step 4: Launch Network Topology
+```bash
+sudo python3 topology/asdm_topo.py
+```
+This deploys a Mininet network with SDN switches and IoT devices.
+
+#### Step 5: Simulate Attacks
+```bash
+python3 attack_simulator/attack_launcher.py --attack udp
+python3 attack_simulator/attack_launcher.py --attack tcp
+python3 attack_simulator/attack_launcher.py --attack http
+python3 attack_simulator/attack_launcher.py --attack mix
+Supported attack types: UDP Flood, TCP SYN Flood, HTTP Flood, Mixed Flood.
+```
+
+#### Step 6: Monitor Results
+Logs saved in:
+```bash
+Copy code
+experiments/results_logs/
+```
+Example files: acd_C1.log, sad_C1.log
+Metrics reported: detection time, mitigation latency, CPU usage, recovery %
+
+### 🌐 2. Real-World Deployment (SD-IoT Network)
+This mode integrates ASDM with real SDN controllers, IoT/edge devices, and P4-enabled switches.
+
+#### Step 1: Deploy Controller
+Install ASDM on your controller host and run:
 
 ```bash
 python3 -m controller.controller_manager
 ```
 
-### 4. Launch topology (With Attack simulation )
+#### Step 2: Connect IoT/Edge Device
 
-Open New TERMINAL
+Configure IoT devices to forward traffic via the SDN switch.
+Ensure OpenFlow or P4Runtime communication with the controller.
 
-```bash
-sudo python3 topology/asdm_topo.py
-```
+#### Step 3: Enable SAD + TSTA
+
+SAD (Sequential Attack Detection): Detects anomalies over time.
+TSTA (Temporal-Spatial Threat Analysis): Assesses device trustworthiness.
+
+#### Step 4: Real Traffic & Attack Injection
+
+Deploy normal IoT workloads (e.g., MQTT, CoAP, HTTP).
+Launch controlled attacks (e.g., UDP/TCP floods) from test nodes.
+
+#### Step 5: Adaptive Mitigation (DAM)
+
+Suspicious flows are rate-limited, rerouted, or blacklisted.
+Normal traffic remains unaffected to ensure service continuity.
+
+#### Step 6: Validate Performance
+
+Monitor CPU and bandwidth overhead of the controller.
+Check recovery >98% and latency <12 ms (detection).
+Logs and analysis exported to experiments/results_logs/.
 
 ---
 
@@ -164,6 +223,7 @@ ASDM has been rigorously tested and validated using four diverse and widely reco
 Have a Good Testing :)
   
 ---
+
 
 
 
