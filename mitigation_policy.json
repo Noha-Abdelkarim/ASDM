@@ -1,0 +1,6 @@
+{
+  "ddos": "drop",
+  "arp_spoofing": "isolate",
+  "udp_flood": "throttle",
+  "syn_flood": "reroute"
+}

@@ -1,0 +1,15 @@
+{
+  "policies": [
+    {
+      "attack_type": "ddos",
+      "action": "block",
+      "target": "src_ip"
+    },
+    {
+      "attack_type": "arp",
+      "action": "rate_limit",
+      "target": "src_ip",
+      "limit": "100pps"
+    }
+  ]
+}

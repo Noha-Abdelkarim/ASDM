@@ -1,0 +1,7 @@
+{
+  "window_size": 50,
+  "escalation_threshold": 0.7,
+  "collaboration_enabled": true,
+  "feature_set": ["packet_rate", "byte_rate", "flow_count"],
+  "anomaly_threshold": 0.7
+}

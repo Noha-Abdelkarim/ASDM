@@ -1,0 +1,26 @@
+{
+  "controllers": [
+    {
+      "id": "C1",
+      "ip": "127.0.0.1",
+      "port": 6653
+    }
+  ],
+  "switches": [
+    {"id": "s1"},
+    {"id": "s2"}
+  ],
+  "hosts": [
+    {"id": "h1", "switch": "s1"},
+    {"id": "h2", "switch": "s1"},
+    {"id": "h3", "switch": "s2"},
+    {"id": "h4", "switch": "s2"}
+  ],
+  "links": [
+    {"node1": "s1", "node2": "s2", "bw": 20},
+    {"node1": "h1", "node2": "s1", "bw": 10},
+    {"node1": "h2", "node2": "s1", "bw": 10},
+    {"node1": "h3", "node2": "s2", "bw": 10},
+    {"node1": "h4", "node2": "s2", "bw": 10}
+  ]
+}

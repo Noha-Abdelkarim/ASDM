@@ -1,0 +1,8 @@
+{
+  "window_size": 50,
+  "escalation_threshold": 0.7,
+  "collaboration_enabled": true,
+  "packet_rate_threshold": 1000,
+  "flow_timeout": 30,
+  "alert_level": "high"
+}
